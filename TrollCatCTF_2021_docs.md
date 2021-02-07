@@ -82,3 +82,5 @@ Cracking password protected zip, rar, pdf files with zydra https://null-byte.won
 Basic Stegano checklist https://fareedfauzi.gitbook.io/ctf-checklist-for-beginner/steganography
 
 Hiding and extracting messages in x86 programs https://github.com/woodruffw/steg86
+
+https://www.nilsand.re/ctf/writeup/2021/02/06/trollcat21.html
