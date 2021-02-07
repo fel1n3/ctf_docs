@@ -63,7 +63,8 @@ We are given a file, trollcats.car, and asked to retrieve data from this file. G
 ### Rich Orphan (Zenode)
 
 Was given a .txt file that contained the following:
-```sys:$1$fUX6BPOt$Miyc3UpOzQJqz4s5wFD9l0:14742:0:99999:7:::
+```
+sys:$1$fUX6BPOt$Miyc3UpOzQJqz4s5wFD9l0:14742:0:99999:7:::
 sys:x:3:3:sys:/dev:/bin/sh
 ```
 
