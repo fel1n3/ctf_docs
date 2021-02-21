@@ -15,7 +15,6 @@
 <br/><br/>
 
 ## CODE
-============
 
 ### Hello ${name} (25p, Charlie)
 
@@ -48,7 +47,6 @@ They accidentally forgot the flag into the python file... oopsie. `flag{n0t_that
 Given a python script and the output from the run that generated the flag. Using the seeds from that output we can reconstruct the flag, `flag{Oppsie_LULZ_fixed}`
 
 ## STEGANOGRAPHY
-============
 
 ### Easy Stego (25p)
 
@@ -75,7 +73,6 @@ Additionally, in the final turtles zip file, there's a key.png, containing hex `
 Now, a normal person would madke the AES / A3S connection instantly when there was only 9 solves on the challenge. However, I am a bit speshul. Such is life. Binary to hex, `3DC906F6928EE882CCB1B8BDD14AA24C`, then using AES decoder in ECB mode results in the flag, `flag{steg0_a3s}`.
 
 ## MISC
-============
 
 ### Esoteric (25p)
 
@@ -113,7 +110,6 @@ We are given a QR code that has been drawn over with a white brush, rendering it
 ![output](https://cdn.discordapp.com/attachments/534004815160934410/812408701125918800/unknown.png)
 
 ## Web
-============
 
 #### Stay Away Creepy Crawlers (25p)
 
@@ -132,7 +128,6 @@ We are given a QR code that has been drawn over with a white brush, rendering it
 #### Protected Directory (50p)
 
 ## RE
-============
 
 ### The only tool you'll ever need (25p)
 
@@ -143,14 +138,12 @@ It's strings. The only tool you'll ever need is strings. Given a file, a.out, fl
 This is lidl Unity mmorpg. After character creation, we get put onto a map. A section of a map is a sort of a racing corridor. There's a start and finish and you have to run it in less than 5 seconds. The game gives you the flag, flag{*fillthisiniforgotrn*} no matter how slow you are. Not sure if intended. The other challenges require some sort of cheat engine work or reverse engineering the unity game itself.
 
 ## CRYPTO
-============
 
 ### Classic Crypto (50p, Zenode)
 
 ### Easy Peasy (50p, Zenode)
 
 ## FORENSICS
-============
 
 ### H4ck3R_m4n exp0sed! 1 (25p, Fel)
 
@@ -163,14 +156,12 @@ fel u write how u got the dataz.
 So now we have this pure hex file. Hex > text results in a very familiar JFIF header, encoded in base64. It's an jpg file. Now, because I'm not sure how to properly convert this into an actual image, I had to go with a hack. I replaced the base64 encoded image in the Forwards from Grandma email file with this new file. Then opened the email file in Thunderbird and the image had changed to a rick and morty pic with the flag, `flag{20_minute_adventure}`.
 
 ## TENABLE
-============
 
 ### Knowledge is knowing a tomato is a fruit (25p)
 
 ### It's twice as hard (100p)
 
 ## OSINT
-============
 
 ### We're watching you (75p)
 
