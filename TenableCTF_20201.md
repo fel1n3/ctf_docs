@@ -1,5 +1,6 @@
 <p align="center"> ### Tenable CTF, February 2021 documentation ### </p>
 <p align="center"> ### Placement: x / x ### </p>
+<br/><br/>
 
 - [CODE](#code)
 - [STEGANOGRAPHY](#steganography)
@@ -11,6 +12,7 @@
 - [TENABLE](#tenable)
 - [OSINT](#osint)
 
+<br/><br/>
 
 ## CODE
 ============
