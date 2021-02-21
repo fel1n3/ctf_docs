@@ -10,7 +10,9 @@ It's strings. The only tool you'll ever need is strings. Given a file, a.out, fl
 
 This is lidl Unity mmorpg. After character creation, we get put onto a map. A section of a map is a sort of a racing corridor. There's a start and finish and you have to run it in less than 5 seconds. The game gives you the flag, flag{*fillthisiniforgotrn*} no matter how slow you are. Not sure if intended. The other challenges require some sort of cheat engine work or reverse engineering the unity game itself.
 
-### Random Encryption (Code, 100p)
+### Hello ${name} (Code, 25p, Charlie)
+
+### Random Encryption (Code, 100p, Charlie)
 
 They accidentally forgot the flag into the python file... oopsie. `flag{n0t_that_r4ndom}`
 
@@ -20,7 +22,9 @@ They accidentally forgot the flag into the python file... oopsie. `flag{n0t_that
 
 Given a python script and the output from the run that generated the flag. Using the seeds from that output we can reconstruct the flag, `flag{Oppsie_LULZ_fixed}`
 
-### Hello ${name} (Code, 25p, Charlie)
+### Short and Sweet (Code, 25p)
+
+### Parsey Mcparser (Code, 50p)
 
 ### Easy Stego (Stego, 25p)
 
@@ -56,6 +60,18 @@ File given is haystack.txt, a literal haystack where we have to find the flag. T
 
 todo
 
+### Find the encoding (Misc, 50p)
+
+We are given a string, `DeZmqMUkDJceycJHJPzZet`. This was quite tricky at first, since it didn't seem to be encoded in anything common. After some struggle with some more exotic encodings, it turns out to be Base58. Flag is `flag{not_base64)`
+
+### Forwards from Grandma (Misc, 100p)
+
+This one is an email file, with an attached image of a comic. For a long time we looked at the image, completely oblivious to the colossal hint in the title of the challenge. FORWARDS from Grandma. The Subject of the email is:
+
+`FWD: FWD: RE: FWD: FWD: RE: FWD: FWD: FWD: RE: RE: RE: FWD: { FWD: FWD: FWD: FWD: RE: RE: FWD: RE: RE: RE: FWD: FWD: FWD: FWD: FWD: FWD: FWD: FWD: FWD: FWD: RE: RE: FWD: RE: FWD: RE: RE: RE: RE: FWD: RE: FWD: FWD: } THIS IS HILARIOUS AND SO TRUE`
+
+It's even structured in a very obvious way: data{data}. Initially tried binary, but grandma is old school and sent the message in Morse code instead. That's what the double spaces are for, they are the delimiter for the individual bits of morse code. Flag: `flag{I_MISS_AOL}`.
+
 ### Broken QR (Misc, 100p)
 
 We are given a QR code that has been drawn over with a white brush, rendering it unreadable. Re created the QR code from scratch in a Google Sheets document, managed to fill in almost all of the corrupted data. This yielded the flag, `flag{d4mn_it_w0nt_sc4n}`.
@@ -89,9 +105,15 @@ We are given a gif of a Korean singer/personality/something doing peekaboo. Spen
 
 ### Easy Peasy (Crypto, 50p, Zenode)
 
-### H4ck3R_m4n exp0sed! 1 (Forensics, 25p, )
+### H4ck3R_m4n exp0sed! 1 (Forensics, 25p, Fel)
 
-### H4ck3R_m4n exp0sed! 2 (Forensics, 25p, )
+### H4ck3R_m4n exp0sed! 2 (Forensics, 25p, Fel)
+
+### H4ck3R_m4n exp0sed! 3 (Forensics, 50p, Fel, me)
+
+fel u write how u got the dataz.
+
+So now we have this pure hex file. Hex > text results in a very familiar JFIF header, encoded in base64. It's an jpg file. Now, because I'm not sure how to properly convert this into an actual image, I had to go with a hack. I replaced the base64 encoded image in the Forwards from Grandma email file with this new file. Then opened the email file in Thunderbird and the image had changed to a rick and morty pic with the flag, `flag{20_minute_adventure}`.
 
 ### Knowledge is knowing a tomato is a fruit (Tenable, 25p)
 
