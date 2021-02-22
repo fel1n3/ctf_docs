@@ -11,6 +11,7 @@
 - [FORENSICS](#forensics)
 - [TENABLE](#tenable)
 - [OSINT](#osint)
+- VIDYA(#vidya)
 
 <br/><br/>
 
@@ -153,13 +154,21 @@ This is lidl Unity mmorpg. After character creation, we get put onto a map. A se
 
 fel u write how u got the dataz.
 
-So now we have this pure hex file. Hex > text results in a very familiar JFIF header, encoded in base64. It's an jpg file. Now, because I'm not sure how to properly convert this into an actual image, I had to go with a hack. I replaced the base64 encoded image in the Forwards from Grandma email file with this new file. Then opened the email file in Thunderbird and the image had changed to a rick and morty pic with the flag, `flag{20_minute_adventure}`.
+So now we have this pure hex file. Hex > text results in a very familiar JFIF header, encoded in base64. It's a jpg file. Now, because I wasn't sure how to properly convert this into an actual image, I had to go with a hack. I replaced the base64 encoded image in the Forwards from Grandma email file with this new file. Then opened the email file in Thunderbird and the image had changed to a rick and morty pic with the flag, `flag{20_minute_adventure}`.
 
 ## TENABLE
 
 ### Knowledge is knowing a tomato is a fruit (25p)
 
 ### It's twice as hard (100p)
+
+## VIDYA
+
+### Play me (200p)
+
+We are given a .gb file. Quick google suggests it's a gameboy file. Installing an emulator (Visual Boy Advance) and getting the game to run is a quick 2 minute process on Windows. The game turns out to be a kind of a boshy style platformer. It might actually be playable, but hacking it seemed quicker. I was initially going to use cheat engine, but it turns out this emulator has similar functionality built right in.
+
+We can look at the memory, live, and find values that change as we move around the map. Doesn't take long to find the memory address storing x and y coordinates. Knowing this memory address, it is now possible to create a cheat, and change the value of the x coordinate to move us further along on the map. This effectively teleports you. After about 3 increments, the character gets placed on the end screen, which displays our flag, `flag{pixels}`.
 
 ## OSINT
 
