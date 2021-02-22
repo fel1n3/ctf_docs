@@ -11,7 +11,7 @@
 - [FORENSICS](#forensics)
 - [TENABLE](#tenable)
 - [OSINT](#osint)
-- VIDYA(#vidya)
+- [VIDYA](#vidya)
 
 <br/><br/>
 
@@ -56,6 +56,10 @@ png file, different parts of the flag are hidden in different color layers of th
 ### Hackerman (25p)
 
 Challenge provides us a svg file, however examining the file reveals that there's xml inside. The document contains our flag, `flag{...}`.
+
+### Secret Images (125p)
+
+We are given two png files. They both appear to be random noise, and none of the extraction method yield any files or data. However, the fact that we are given two files suggests that perhaps we should combine them somehow. Stegsolve has that functionality, and 
 
 ### Weird Transmission (175p)
 
@@ -112,21 +116,33 @@ We are given a QR code that has been drawn over with a white brush, rendering it
 
 ## Web
 
-#### Stay Away Creepy Crawlers (25p)
+### Stay Away Creepy Crawlers (25p)
 
-#### Source of All Evil (25p)
+### Source of All Evil (25p)
 
-#### Can't find it (25p)
+Flag is in the HTML of the main page, `<!-- source flag : flag{best_implants_ever} -->`.
 
-#### Show me what you got (25p)
+### Can't find it (25p)
 
-#### Certificate of Authenticity (25p)
+The 404 page has our flag, `flag{404_oh_no}`.
 
-#### Headers for your inspiration (25p)
+### Show me what you got (25p)
 
-#### Ripper Doc (50p)
+Challenge asks us to find the 'indexes' flag. Looking at the source we see that the only image on the site is located in the /images directory. In this directory we also find our flag, `flag{disable_directory_indexes}`, in a text file.
 
-#### Protected Directory (50p)
+### Certificate of Authenticity (25p)
+
+Connecting to the site with HTTPS lets us see the hand crafted certificate, which frightens our browser so. Flag is in there, `flag{selfsignedcert}`.
+
+### Headers for your inspiration (25p)
+
+Network tab in devtools allows us to see Headers, which contain our flag, `flag{headersftw}`.
+
+### Ripper Doc (50p)
+
+The site has a `certified rippers` page but we cannot access it as we are not authenticated. After some searching in devtools, it turns out that authentication is done with a cookie, and after changing it's value and reloading, we get our flag, 'flag{messing_with_cookies}'.
+
+### Protected Directory (50p)
 
 ## RE
 
@@ -142,7 +158,11 @@ This is lidl Unity mmorpg. After character creation, we get put onto a map. A se
 
 ### Classic Crypto (50p, Zenode)
 
+The challenge provides a ciphered text. It's none of the rot ciphers, but it looks awfully like it, so it should be vigenere. This means the key has to be guessed, and has to therefore be relatively easy to guess. Anonymous works, and we get our flag, 'flag{classicvigenere}'.
+
 ### Easy Peasy (50p, Zenode)
+
+We are given a string that looks awfully like base64. Decoding that yields some hex, decoding that gives us a flag but it's ciphered. Rot13 works. Easy Peasy. Flag: `flag{congrats_you_got_me}`.
 
 ## FORENSICS
 
@@ -160,7 +180,11 @@ So now we have this pure hex file. Hex > text results in a very familiar JFIF he
 
 ### Knowledge is knowing a tomato is a fruit (25p)
 
+These challenges were based on the product of the organizer, challenge gave a scan file which was loaded into the software. Basically it's a a report of a cybersecurity scan which lists all vulnerabilities the system it was run on had. The flags were hidden throughout this report. This particular flag, `flag{bu7 n07 putt1ng 1t 1n 4 fru17 s@l4d, th@t5 W1SD0M}`, was in the bottom of the host details file for the `172.26.48.53` machine.
+
 ### It's twice as hard (100p)
+
+Flag file was found in the Debugging Log Report on the `.53` machine, which listed 106 log files in total. The flag was in the bottom of the get_flag.log file, but not directly, but as a command, ``session.ssh_cmd_wrapper: Ran command: "cat /tmp/flag | xxd -p"`` and output: `Returned: 2e2e2e2e2e2e2e2e2e2e ... etc`. xxd -r -p on the output yields our flag, `...`
 
 ## VIDYA
 
