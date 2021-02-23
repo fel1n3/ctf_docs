@@ -118,6 +118,8 @@ We are given a QR code that has been drawn over with a white brush, rendering it
 
 ### Stay Away Creepy Crawlers (25p)
 
+There's a file called robots.txt, which has our flag, `flag{mr_roboto}`.
+
 ### Source of All Evil (25p)
 
 Flag is in the HTML of the main page, `<!-- source flag : flag{best_implants_ever} -->`.
@@ -137,6 +139,17 @@ Connecting to the site with HTTPS lets us see the hand crafted certificate, whic
 ### Headers for your inspiration (25p)
 
 Network tab in devtools allows us to see Headers, which contain our flag, `flag{headersftw}`.
+
+### SpringMVC 1-6 (25p each)
+
+The challenge gave us the source code to the website, and asked us to generate precise requests to get flags. 3 Files in the source code basically told you exactly what to do in order to receive the flag. Using Postman to make these requests.
+
+1. Generate get request to /main subdirectory, flag, `flag{flag1_517d74}`.
+2. Post request to /main subdirectory, passing the parameter `magicWord` with any value. Flag `flag{flag2_de3981}`.
+3. Post request to /main subdirectory, passing the parameter `magicWord` with the value `please`. Flag `flag{flag3_0d431e}`.
+4. Post request to /main subdirectory. Hint is JSON, so Content-Type: `multipart/form-data` and also a header Content-Type with value `application/json`. Flag `flag{flag4_695954}`.
+5. Options request to /main subdirectory, flag `flag{flag5_70102b}`.
+6. Get request to /main subdirectory, with a header Magic-Word with the value `please`. Flag `flag{flag6_ca1ddf}`.
 
 ### Ripper Doc (50p)
 
@@ -167,6 +180,8 @@ We are given a string that looks awfully like base64. Decoding that yields some 
 ## FORENSICS
 
 ### H4ck3R_m4n exp0sed! 1 (25p, Fel)
+
+We are given a packet capture file 
 
 ### H4ck3R_m4n exp0sed! 2 (25p, Fel)
 
