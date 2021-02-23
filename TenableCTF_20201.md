@@ -5,7 +5,7 @@
 - [CODE](#code)
 - [STEGANOGRAPHY](#steganography)
 - [MISC](#misc)
-- [Web](#web)
+- [WEB](#web)
 - [RE](#re)
 - [CRYPTO](#crypto)
 - [FORENSICS](#forensics)
