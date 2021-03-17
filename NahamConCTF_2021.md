@@ -158,3 +158,15 @@ This was a recon challenge to find the flag on HackTheBox's online presence. I'm
 ## Useful Stuff
 
 https://github.com/TeamRocketIst/ctf-usb-keyboard-parser
+
+https://github.com/WangYihang/UsbKeyboardDataHacker
+
+https://aur.archlinux.org/packages/android-apktool/ and jadx and jadx-gui for decompiling .apk
+
+https://github.com/volatilityfoundation/volatility to analyze dump files. https://github.com/ryan-cd/ctf/tree/master/2021/nahamcon/forensics/typewriter
+
+
+
+
+
+
