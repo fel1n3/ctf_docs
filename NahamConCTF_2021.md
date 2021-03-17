@@ -33,13 +33,13 @@ This one puzzled us for the longest time. The given file contained a bunch of em
 
 ### Eighth Circle
 
-Challenge provides a text file with a long line of seemingly garbage text. Googling 'Eighth Circle' leads us to Dante's Inferno, where the eighth circle of hell was named Malebolge. Incidentally, there's also an esoteric programming language called Malbolge. Using an online Malbolge interpreter, we can run the given code which returns our flag.
+Challenge provides a text file with a long line of seemingly garbage text. Googling `Eighth Circle` leads us to Dante's Inferno, where the eighth circle of hell was named Malebolge. Incidentally, there's also an esoteric programming language called Malbolge. Using an online Malbolge interpreter, we can run the given code which returns our flag.
 
 ### esab64 (Zenode)
 
 Filename is base64 backwards. Reversed the string inside, decoded with base64, then reversed that to get flag.
 
-### Veebee (Zendoe)
+### Veebee (Zenode)
 
 Visual Basic script. Flag could be found by just running it.
 
@@ -55,7 +55,7 @@ Challenge provides a file called buzz, of type compress'd data 16 bits. Renaming
 
 ### Abyss
 
-netcat into a host that spams untold amount of garbage. Let that run for a minute and piped everything into a text file. Searching the file yielded the flag.
+netcat into a host that spams untold amount of garbage. Let that run for a minute and piped everything into a text file. `cat file | grep flag` yielded the flag.
 
 ## Web
 
@@ -74,8 +74,7 @@ to edit and add the 'X-Forwarded-For:' header and set it to 127.0.0.1. This yiel
 
 ### Ret2Basic (Fel)
 
-- [VIDYA](#vidya)
-From quickly playing around with it I notice that it's obviously a buffer overflow thing, so I load the binary in gdb and first find the address of the flag to be 0x401215 and named win. Then using the pattern tool I find the offset to be 120 bytes, which I simply passed to the remote binary using inline python ( python -c 'print "A"*120+"\x15\x12\x40\x00\x00\x00\x00\x00"' and obtained the flag.
+From quickly playing around with it I notice that it's obviously a buffer overflow thing, so I load the binary in gdb and first find the address of the flag to be `0x401215` and named win. Then using the pattern tool I find the offset to be 120 bytes, which I simply passed to the remote binary using inline python `python -c 'print "A"*120+"\x15\x12\x40\x00\x00\x00\x00\x00"'` and obtained the flag.
 
 ## CRYPTO
 
@@ -107,7 +106,7 @@ The initial Mission challenge. Simply checked robots.txt on constellations.page 
 
 robots.txt directs us to a different page, constellations.page/meet-the-team.html. Sadly we are too late, the content of the page has been redacted due to security reasons. However, when inspecting the page, we get an important clue.
 
-<!-- Vela, can we please stop sharing our version control software out on the public internet? -->
+`<!-- Vela, can we please stop sharing our version control software out on the public internet? -->`
 
 There is a link to the organizations github page in the footer but there's nothing there. There is also a .git/ subdirectory but it appears to be private. After a bit of searching we find https://github.com/internetwache/GitTools. Used the dumper script to grab the contents of the constellations.page/.git and then the extractor script to turn that dump into human readable files
 
@@ -126,7 +125,7 @@ Now we have a the employee names, and most of them have their own challenges.
 
 ### Gus
 
-I noticed Gus' github account linked to the constellations organization github page. Gus has a repo called development. Going through the files, I notice that every line in the .gitignore file has typos, ie .sh/id_rsa instead of .ssh/id_rsa. Sure enough going through the config folder there is a .ssh folder and inside we find the flag for this challenge, as well as a rsa public and private key.
+I noticed Gus' github account linked to the constellations organization github page. Gus has a repo called development. Going through the files, I notice that every line in the .gitignore file has typos, ie `.sh/id_rsa` instead of `.ssh/id_rsa`. Sure enough going through the config folder there is a .ssh folder and inside we find the flag for this challenge, as well as a rsa public and private key.
 
 ### Lyra
 
