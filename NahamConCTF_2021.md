@@ -94,7 +94,11 @@ The script is formatted terribly, variable names are ss, sss, z, zz, zs, sz etc 
 
 ### Henpeck (Zenode)
 
-We have a .pcap file, opening with wireshark and it turns out to be a USB capture. TODO
+After being given the Henpeck file, I opened the file in wireshark to see have a quick look, I noticed that some of the packets had URB_INTERRUPT in which generally means that a key is being pressed or mouse is being used. I had a quick glance at the data in the "Leftover Capture Data" segment and noticed two bits changing. Comparing this to an online table you can see that these bits correspond to key presses.
+
+So I extracted the data using `tshark -r ./henpeck.pcap -Y 'usb.capdata && usb.data_len == 8' -T fields -e usb.capdata | sed 's/../:&/g2' > output`
+
+Once extracted I then ran a python script found at https://github.com/TeamRocketIst/ctf-usb-keyboard-parser to parse the information into readable text using `python3 usbkeyboard.py output` which resulted in the flag.
 
 ## MISSION
 
