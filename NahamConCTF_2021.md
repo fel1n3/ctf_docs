@@ -80,9 +80,7 @@ From quickly playing around with it I notice that it's obviously a buffer overfl
 
 ### Dice Roll (Fel)
 
-Given a python script, after a quick glance notice that the script is using getrandbits, a prng. After a quick search I found a library that discovered the
-internal state of the generator given enough values named randcrack (https://pypi.org/project/randcrack/). Using this I quickly wrote a script that queried
-the server a bunch of times and obtained the flag.
+Given a python script, after a quick glance notice that the script is using getrandbits, a pseudo rng. After a quick search I found a library named randcrack, that given enough values discovered the internal state of the generator (https://pypi.org/project/randcrack/). Using this I quickly wrote a script that queried the server a bunch of times and obtained the flag.
 
 ## FORENSICS
 
@@ -90,7 +88,7 @@ the server a bunch of times and obtained the flag.
 
 We are given a byte-compiled python file. From an earlier CTF I know that uncompyle6 can be used to render this file human readable and usable. Done. Now we have a python file that has a lot of obfuscation and seems to use random to generate the flag.
 
-The script is formatted terribly, variable names are ss, sss, z, zz, zs, sz etc to overall make it as confusing as possible. Slowly working through and simplifying it I realise that random component is completely unnecessary. The flag is hard coded into the python script and fairly easy to get after all this simplification.
+The script is formatted terribly, variable names are ss, sss, z, zz, zs, sz etc to overall make it as confusing as possible. Slowly working through and simplifying it I realise that random component is completely unnecessary. The flag is hard coded into the python script and easy to get after all this simplification.
 
 ### Henpeck (Zenode)
 
@@ -112,24 +110,31 @@ robots.txt directs us to a different page, constellations.page/meet-the-team.htm
 
 `<!-- Vela, can we please stop sharing our version control software out on the public internet? -->`
 
-There is a link to the organizations github page in the footer but there's nothing there. There is also a .git/ subdirectory but it appears to be private. After a bit of searching we find https://github.com/internetwache/GitTools. Used the dumper script to grab the contents of the constellations.page/.git and then the extractor script to turn that dump into human readable files
+There is a link to the organizations github page in the footer but there's nothing there. There is also a .git/ subdirectory but it appears to be private. After a bit of searching we find https://github.com/internetwache/GitTools. Used the dumper script to grab the contents of the constellations.page/.git and then the extractor script to turn that dump into readable files.
 
 Now we have 6 folders, each of which is a commit with all the relevant files and metadata. One of the commits contains an older version of the page with the full list of employee names, as well as the flag for this challenge.
 
 Orion Morra — Support
+
 Lyra Patte — Marketing
+
 Leo Rison — Development
+
 Gemini Coley — Operations
+
 Hercules Scoxland — Sales
+
 Vela Leray — Management
+
 Pavo Welly — HR
+
 Gus Rodry — Accounting
 
 Now we have a the employee names, and most of them have their own challenges.
 
 ### Gus
 
-I noticed Gus' github account linked to the constellations organization github page. Gus has a repo called development. Going through the files, I notice that every line in the .gitignore file has typos, ie `.sh/id_rsa` instead of `.ssh/id_rsa`. Sure enough going through the config folder there is a .ssh folder and inside we find the flag for this challenge, as well as a rsa public and private key.
+I noticed Gus' github account linked to the constellations organization github page. Gus has a repo called development. Going through the files, I notice that every line in the .gitignore file has a typo, ie `.sh/id_rsa` instead of `.ssh/id_rsa`. Sure enough going through the config folder there is a .ssh folder and inside we find the flag for this challenge, as well as a rsa public and private key.
 
 ### Lyra
 
@@ -147,7 +152,7 @@ And as it turns out somebody didn't change their default password and that someo
 
 ### Leo
 
-Googling Leo Rison gets very little, there is someone with that name on Instagram though. So, time to make a fake instagram account I suppose. This process was extremely annoying. In the end, that guy wasn't even the right guy. However searching for Leo Rison inside instagram yields another account, which is in fact the one we're looking for. One of his posts has a QR code and scannig it gets us our flag.
+Googling Leo Rison gets very little, there is someone with that name on Instagram though. So, time to make a fake instagram account I suppose. This process was extremely annoying. In the end, that Leo wasn't even the right guy. However searching for Leo Rison inside instagram yields another account, which is in fact the one we're looking for. One of his posts has a QR code and scanning it gets us our flag.
 
 ### Orion
 
