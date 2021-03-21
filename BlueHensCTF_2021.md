@@ -142,9 +142,11 @@ So, `?file=/1a2220dd8c13c32e/flag.txt`, yields the flag, `UDCTF{h4h4_suck3rs_i_t
 
 ### SeaEssAreEph
 
-So this one was supposed to be a CSRF challenge.. but it was a little broken actually, I believe. You could create an account and then log in, which I did when exploring the site. I discovered that you can send messages to the admins, as well as transfer funds, but only if you are a site admin.
+So this was a CSRF challenge.. but it was a little broken actually, I believe. You could create an account and then log in, which I did when exploring the site. I discovered that you can send messages to the admins, as well as transfer funds, but only if you are a site admin.
 
-Here's where the broken part comes in though. I logged in and out of my account quite a few times and one time I logged in and .. uhmm well, as it happens, I was put into someone else's account instead of my own. So I just sat there, stunned, contemplating this mysterious turn of events. I decided to refresh the page and apparently the better educated actual owner of the account had succeeded in the CSRF attack and sent 10000 eurodollars to themselves. I then decided to graciously borrow 1337 dollaridoos by hitting the "Buy Flag" button.
+Here's where the broken part comes in though. I logged in and out of my account quite a few times while experimenting and one time I logged in and .. uhmm well, as it happens, I was put into someone else's account instead of my own. So I just sat there, stunned, contemplating this mysterious turn of events. 
+
+I then decided to refresh the page and apparently the better educated actual owner of the account had succeeded in the CSRF attack and sent 10000 eurodollars to themselves. So I figured I would graciously borrow 1337 dollaridoos by hitting the "Buy Flag" button.
 
 All I have to say in my defense is, ... eat the rich. Flag `UDCTF{us1ng_csrf_t0_st34l_4ll_th3_m0n3y}`.
 
