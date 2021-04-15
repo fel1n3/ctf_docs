@@ -217,4 +217,8 @@ todo
 Geno has disappeared! The challenge instructed us to find some incriminating evidence by looking at the social media of his ex. We are asked for a nation state though, and the data dump from Data Breach literally has `[[NATIONAL SECURITY SERVICE OF THE GOVERNMENT OF ACKARIA]] [[Super-Secret List of pwn'd Adversaries]]` in the beginning of it... Flag `RS{Ackaria}`.
 
 
+## Useful stuff
 
+https://apackets.com/
+
+https://szymanski.ninja/en/ctfwriteups/2021/ritsecctf/answers/
