@@ -170,8 +170,9 @@ Given a python byte-compiled file, uncompyle6 do translate it back into source c
 
 # CRYPTO
 
-### What an Enigma? (Zenode)
+### What an Enigma
 
+(Zenode)
 todo
 
 ### lorem ipsum
@@ -206,8 +207,9 @@ Apparently Geno's email was involved in a data breach, and we have to find his p
 
 Challenge says that Geno keeps up with his ex's music interests, and asks "What do they say about her personality". Looking up Geno on spotify doesn't work, however Geno has a twitter follower called Claire with a spotify link. She has a playlist, and the first letters of each song makes the flag, `RS{Sagittarius}`. The takeaway from this is that Spotify search is trash, and astrology is asinine.
 
-### OSINTChallenge (Charlie)
+### OSINTChallenge
 
+(Charlie)
 todo
 
 ### APT Interference
