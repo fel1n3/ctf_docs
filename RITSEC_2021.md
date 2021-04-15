@@ -20,7 +20,7 @@
 - [REV](#rev)
   - [snek](#snek)
 - [CRYPTO](#crypto)
-  - [What an Enigma?](#what-an-enigma?)
+  - [What an Enigma](#what-an-enigma)
   - [lorem ipsum](#lorem-ipsum)
 - [INTEL](#intel)
   - [Finding Geno](#finding-geno)
