@@ -3,7 +3,7 @@
 <br/><br/>
 
 - [FORENSICS](#forensics)
-  - [Key mission>Zenode<](#key-mission>zenode<)
+  - [Key mission](#key-mission)
   - [AlienPhish](#alienphish)
   - [Invitation](#invitation)
 - [MISC](#misc)
@@ -16,7 +16,7 @@
   - [Nintendo Base64](#nintendo-base64)
   - [PhaseStream 1](#phasestream-1)
   - [PhaseStream 2](#phasestream-2)
-  - [PhaseStream 3 !fel](#phasestream-3-!fel)
+  - [PhaseStream 3](#phasestream-3)
   - [PhaseStream 4](#phasestream-4)
 - [Hardware](#hardware)
   - [Serial Logs](#serial-logs)
@@ -30,7 +30,8 @@
 
 ## FORENSICS
 
-### Key mission>Zenode<
+### Key mission
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~ Zenode
 
 todo
 
@@ -129,7 +130,8 @@ with open ('output.txt', 'r') as file:
 flag `CHTB{n33dl3_1n_4_h4yst4ck}`.
 
 
-### PhaseStream 3 !fel
+### PhaseStream 3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~ fel
 
 todo
 
