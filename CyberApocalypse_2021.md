@@ -3,7 +3,7 @@
 <br/><br/>
 
 - [FORENSICS](#forensics)
-  - [Key mission /Zenode](#key-mission-!Zenode)
+  - [Key mission !Zenode](#key-mission-!Zenode)
   - [AlienPhish](#alienphish)
   - [Invitation](#invitation)
 - [MISC](#misc)
@@ -16,7 +16,7 @@
   - [Nintendo Base64](#nintendo-base64)
   - [PhaseStream 1](#phasestream-1)
   - [PhaseStream 2](#phasestream-2)
-  - [PhaseStream 3 /fel](#phasestream-3-!fel)
+  - [PhaseStream 3 !fel](#phasestream-3-!fel)
   - [PhaseStream 4](#phasestream-4)
 - [Hardware](#hardware)
   - [Serial Logs](#serial-logs)
