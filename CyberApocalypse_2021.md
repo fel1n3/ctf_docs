@@ -58,7 +58,7 @@ About 5 hours before CTF end I decided to run a virus scan considering this and 
 
 ### Alien Camp
 
-This was another classic netcat parsing challenge. I like these a lot and this was a little more complex than the one's I've done before.
+This was another classic netcat parsing challenge. I like these a lot and this was a little more complex than the ones I've done before.
 
 ![See code here](https://github.com/jp1995/ctf_docs/blob/main/scripts/alien_camp.py)
 
