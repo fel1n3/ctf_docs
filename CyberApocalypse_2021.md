@@ -78,7 +78,7 @@ Challenge gives us a binary that asks for a passphrase. Opening it up in ghidra 
 
 Another REV binary that asks for credentials, specifically an Alien ID and a PIN. We can find the ID of 11337 by just running strings, but to get further we need to look at the code. Opening the binary in ghidra, the main function directs to a checkpin function that handles the PIN. The significant lines here are:
 
-```
+```c
 if ((byte)("}a:Vh|}a:g}8j=}89gV<p<}:dV8<Vg9}V<9V<:j|{:"[local_24] ^ 9U) != param_1[local_24])
 break;
 ```
@@ -97,7 +97,7 @@ Given a text file that reads nintendo64x0 in ASCII. Copying all the ASCII into a
 
 XOR using a repeated 5 byte key. We know the flag starts with CHTB{ so using python and pwntools we can do
 
-```
+```python
 from pwn import *
 flag = xor(unhex('2e313f2702184c5a0b1e321205550e03261b094d5c171f56011904'), "CHTB{")[:5]
 ```
@@ -109,7 +109,7 @@ key is mykey, string decodes to flag `CHTB{u51ng_kn0wn_pl41nt3xt}`.
 
 XOR again, however this time we are given a file with 1000 XORed strings and the key is only 1 byte.
 
-```
+```python
 from pwn import *
 import os
 
@@ -131,9 +131,39 @@ flag `CHTB{n33dl3_1n_4_h4yst4ck}`.
 
 
 ### PhaseStream 3
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~ fel
+After a lot of googling about AES and various methods of encryption I read about the one time pad (OTP) stream cipher method. OTP is perfectly secure *unless* you reuse the key (or that the key is greater than or equal to the length of the message but thats not the issue in this case).
 
-todo
+Now knowing that both outputs were encrypted with the same key, we can go about reversing that. First we need to guess the plain text input for one of the messages, but luckily thats already provided for us in the script. One of the test inputs was `No right of private conversation`. 
+
+Now we must XOR the two cipher-text messages provided for us in the output file, once we have that we must then XOR the result with the hex value of the plain text from before at different offsets. Though in our case the offset was at 0. The script to do so is below:
+
+```python
+import binascii
+
+with open('output.txt', 'rb') as f:
+	content = f.read().split()
+
+known = content[0].strip()
+flag = content[1].strip()
+
+knownn = binascii.unhexlify(known)
+flagn = binascii.unhexlify(flag)
+
+xor = "".join([chr(ord(x) ^ ord(y)) for (x,y) in zip(knownn, flagn)]) #xor each int of char
+word = b'No right of private conversation'
+
+for i in range(len(xor)):
+	g = "".join([chr(ord(x) ^ (ord(y) << i)) for (x,y) in zip(xor, word)])
+	print 'Offset['+str(i)+']: ' + g
+```
+
+Running this gives us the following output:
+```zsh
+➜  cryptops3 python xor.py
+Offset[0]: CHTB{r3u53d_k3Y_4TT4cK}
+Offset[1]: 茸4ﾔﾀﾛ矩Uば?詹簀諒焄ﾆ昕
+```
+and there's our key!
 
 ### PhaseStream 4
 
@@ -202,7 +232,7 @@ Very basic web chall using devtools. Site has the beginning of the flag, `CHTB{`
 
 Taken to a website where we can choose the language dynamically. Looking at the given source, there's a significant bit:
 
-```
+```php
 $lang = ['en.php', 'qw.php'];
     include('pages/' . (isset($_GET['lang']) ? str_replace('../', '', $_GET['lang']) : $lang[array_rand($lang)]));
 ?>
