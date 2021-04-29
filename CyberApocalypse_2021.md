@@ -33,7 +33,17 @@
 ### Key mission
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~ Zenode
 
-todo
+For this we had to download a pcap called "Key_mission.pcap" noticing in the pcap it was a USB device, typically I would look for the leftover capture data, but this had none!
+So I inspected the capture and noticed that each packet had HID data that had a single byte change in every packet. From this I decided to try and use a method I use for other USB data pcaps but change which data is being used.
+
+To extract the relevant data I used the following command.
+
+`shark -r ~/Downloads/key_mission.pcap -Y 'usbhid.data && usb.data_len == 8' -T fields -e usbhid.data | sed 's/../:&/g2' > usbPcapData`
+
+I then ran the script found at https://github.com/TeamRocketIst/ctf-usb-keyboard-parser to parse the data and see if it corresponds to keypresses using `python usbkeyboard.py usbPcapData`. This ran the python script through the data and it worked! The output was:
+
+"I am sending secretary's location over this totally encrypted channel to make sure no one else will be able to read it except of us.
+This information is confidential and must not be shared with anyone else. The secretary's hidden location is CHTB{a_plac3_fAr_fAr_away_fr0m_earth}"  
 
 ### AlienPhish
 
