@@ -8,8 +8,8 @@
   - [Photo Album](#photo-album)
 - [MISC](#misc)
   - [Two Truths and a Fib](#two-truths-and-a-fib)
-  - [Identifications](identifications)
-- [AUDIO/RADIO](#audio/radio)
+  - [identifications](identifications)
+- [AUDIO RADIO](#audio-radio)
   - [Baby's First Modulation](#baby's-first-modulation)
   - [Third Eye](#third-eye)
   - [Tag, You're It!](tag,-you're-it!)
@@ -63,7 +63,7 @@ This was another classic netcat parsing challenge. I like these a lot and this w
 
 [See code here](https://github.com/jp1995/ctf_docs/blob/main/scripts/alien_camp.py)
 
-### Identifications
+### identifications
 
 We're given a picture taken at night of a certain verizon office. Another picture showing nearby Wi-Fi SSID's. We need to get the CLLI of this verizon office.
 
