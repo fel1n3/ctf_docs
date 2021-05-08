@@ -8,11 +8,11 @@
   - [Photo Album](#photo-album)
 - [MISC](#misc)
   - [Two Truths and a Fib](#two-truths-and-a-fib)
-  - [identifications](identifications)
+  - [Identifications_](identifications_)
 - [AUDIO RADIO](#audio-radio)
-  - [Baby's First Modulation](#baby's-first-modulation)
+  - [Babys First Modulation](#babys-first-modulation)
   - [Third Eye](#third-eye)
-  - [Tag, You're It!](tag,-you're-it!)
+  - [Tag Youre It](tag-youre-it)
   - [Tuning In](tuning-in)
   - [Deserted Island Toolkit](deserted-island-toolkit)
   - [Moses](moses)
@@ -63,7 +63,7 @@ This was another classic netcat parsing challenge. I like these a lot and this w
 
 [See code here](https://github.com/jp1995/ctf_docs/blob/main/scripts/alien_camp.py)
 
-### identifications
+### Identifications_
 
 We're given a picture taken at night of a certain verizon office. Another picture showing nearby Wi-Fi SSID's. We need to get the CLLI of this verizon office.
 
@@ -74,9 +74,9 @@ After doing some googling with these businesses, it turns out that there are onl
 Learning about CLLI codes, the first four characters are the city, next 2 are for the state and then further specifics. Looking up MTARMD results in a couple Verizon related CLLI codes, one of which is MTARMDMARS1, which is the flag.
 
 
-## AUDIO
+## AUDIO RADIO
 
-### Baby's First Modulation
+### Babys First Modulation
 
 We are given a .iq file and told the following: This IQ file was saved in standard GNURadio format (complex, 32bit float I, 32bit float Q). Additionally, it's supposed to be a recording of someone reading the flag.
 
@@ -92,7 +92,7 @@ flag is DawgCTF{listen_in_on_the_waves}.
 
 given a mp3 file, opening in sonic visualiser and using the spectrogram view we can see some hex code. this decodes to DawgCTF{syn3sth3s1acs}.
 
-### Tag, You're It!
+### Tag Youre It
 
 Another audio chall. MP3 files have tags for organization but nothing in there as the title would suggest. Running edxiftool for more info and flag is visible in the Comment. Ḑ̶a̴͈w̸͚g̸̱C̵̹T̴͍F̴͚{̴̟w̵̻h̴̭0̵̤_̷̟d̶͕0̶͎w̸͙n̷͚l̶̜0̴͓a̶͚d̷̡s̴ͅ_̶̺m̵̳u̶͎s̷̰1̸͖c̶͔_̷̧a̵̙n̵͈y̴̬m̸̩0̸͓r̴͕3̶͎?̴̩}̴̲, needs to be cleaned up a bit, challenge accepts `DawgCTF{wh0_d0wnl0ads_mus1c_anym0r3?}`.
 
@@ -116,7 +116,7 @@ Another audio chall, this time there's two separate flac files. "If you can find
 
 These files seem almost identical, but one is slightly larger in size. First seemingly obvious thing to try is to find the difference between the files. This can be done with sox. `sox -m -v 1 moses1.flac -v -1 moses2.flac moses_difference.flac`. Spectrogram of the the difference contains the flag, `DawgCTF{sunk3n_tr3asur3s`.
 
-# CRYPTO
+## CRYPTO
 
 ### cooking the ramen
 
@@ -124,7 +124,7 @@ Challenge description has some morse code, decoding it we get JVVE4VS2IRWGCWKYNB
 
 Looks like base something so maybe cyberchef can help. From Base32, From Base64, From Base58 results in flag, `DawgCTF{0k@y_r3al_b@by's_f1r5t}`.
 
-# BINARY BOMB
+## BINARY BOMB
 
 ### Phase 1
 
