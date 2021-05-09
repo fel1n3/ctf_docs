@@ -66,9 +66,9 @@ Netcat parsing. [Scuffed code but I went fast for time.](https://github.com/jp19
 
 We're given a picture taken at night of a certain verizon office. Another picture showing nearby Wi-Fi SSID's. We need to get the CLLI of this verizon office.
 
-Looking at the SSIDs, there's a couple interesting ones. SpaGuest, Katanasushi, Carroll Counselling, Dunkin' Donuts GUest and Carterque.
+Looking at the SSIDs, there's a couple interesting ones. SpaGuest, Katanasushi, Carroll Counselling, Dunkin' Donuts Guest and Carterque.
 
-After doing some googling with these businesses, it turns out that there are only 4 Carroll Counselling offices, all in Maryland. Eventually we find one surrounded with the rest on our list, in the city of Mt Airy. After some street view action it turns out that the verizon office is also there, it just doesn't show up on the map. I assume because it's not an office at all, but some sort of general telecom equipment building.
+After doing some googling with these businesses, it turns out that there are only 4 Carroll Counselling offices, all in Maryland. Eventually we find one surrounded with the rest on our list, in Mt Airy, MD. After some intense street view action it turns out that the verizon office is also there, it just doesn't show up on the map. I assume because it's not an office at all, but some sort of general telecom equipment building.
 
 Learning about CLLI codes, the first four characters are the city, next 2 are for the state and then further specifics. Looking up MTARMD results in a couple Verizon related CLLI codes, one of which is `MTARMDMARS1`, which is the flag.
 
@@ -92,13 +92,13 @@ given a mp3 file, opening in sonic visualiser and using the spectrogram view we 
 
 ### Tag Youre It
 
-Another audio chall. MP3 files have tags for organization but nothing in there as the title would suggest. Running edxiftool for more info and flag is visible in the Comment. Ḑ̶a̴͈w̸͚g̸̱C̵̹T̴͍F̴͚{̴̟w̵̻h̴̭0̵̤_̷̟d̶͕0̶͎w̸͙n̷͚l̶̜0̴͓a̶͚d̷̡s̴ͅ_̶̺m̵̳u̶͎s̷̰1̸͖c̶͔_̷̧a̵̙n̵͈y̴̬m̸̩0̸͓r̴͕3̶͎?̴̩}̴̲, needs to be cleaned up a bit, challenge accepts `DawgCTF{wh0_d0wnl0ads_mus1c_anym0r3?}`.
+Another audio chall. MP3 files have tags for organization but nothing in there as the title would suggest. Running edxiftool for more info and flag is visible in the Comment. `Ḑ̶a̴͈w̸͚g̸̱C̵̹T̴͍F̴͚{̴̟w̵̻h̴̭0̵̤_̷̟d̶͕0̶͎w̸͙n̷͚l̶̜0̴͓a̶͚d̷̡s̴ͅ_̶̺m̵̳u̶͎s̷̰1̸͖c̶͔_̷̧a̵̙n̵͈y̴̬m̸̩0̸͓r̴͕3̶͎?̴̩}̴̲,` needs to be cleaned up a bit, challenge accepts `DawgCTF{wh0_d0wnl0ads_mus1c_anym0r3?}`.
 
 ### Tuning In
 
 So this is another .iq file, but trying the same angle as the last time doesn't yield anything intelligible. Besides, we need to be able to quickly try different frequencies fairly precisely.
 
-After trying to understand gnu radio some more, I give up and stumble upon gqrx, a fantastic tool for exactly this use case. We can directly feed it our .iq file, set an input rate, and run it. I randomly set the rate to 640000 Hz because that's what worked for the last challenge.
+After trying to understand gnu radio some more, I give up and stumble upon `gqrx`, a fantastic tool for exactly this use case. We can directly feed it our .iq file, set an input rate, and run it. I randomly set the rate to 640000 Hz because that's what worked for the last challenge.
 
 ![](https://cdn.discordapp.com/attachments/534004815160934410/840619622520193074/unknown.png)
 
